@@ -1,9 +1,12 @@
+// Identifica o HTML
 var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input')
 var buttonElement = document.querySelector('#app button')
 
+// Pega os dados da localStorage
 var todos = JSON.parse(localStorage.getItem('list_todos')) || []
 
+// Função chamada ao executar o HTML ou ao inserir ou excluir algum item da lista 
 function renderTodos() {
 
     listElement.innerHTML = ''
@@ -30,6 +33,7 @@ function renderTodos() {
     saveToStorage()
 }
 
+// Adiciona novos itens na lista
 function addTodo() {
     var todoText = inputElement.value
 
@@ -44,6 +48,7 @@ function addTodo() {
 
 }
 
+// Adiciona o onclick no Button
 buttonElement.onclick = addTodo
 
 function deleteTodo(pos) {
@@ -51,8 +56,10 @@ function deleteTodo(pos) {
     renderTodos()
 }
 
+// Salva os dados na loaclStorage
 function saveToStorage() {
     localStorage.setItem('list_todos', JSON.stringify(todos))
 }
 
+// Monta a lista ao renderizar a página
 renderTodos()
